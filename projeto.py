@@ -45,3 +45,37 @@ def nome_moeda(opcao):
         return "Reais"
     else:
         return ""
+        # Programa principal
+opcao = 0  # Controle do loop
+
+while opcao != 7:
+    menu()
+    
+    entrada = input("Escolha uma opção (1 a 7): ")
+    
+    if entrada.isdigit():
+        opcao = int(entrada)
+    else:
+        print("Por favor, digite apenas números.")
+        continue
+
+    if opcao == 7:
+        print("Saindo do programa. Até logo!")
+        break
+
+    if 1 <= opcao <= 6:
+        valor_str = input("Digite o valor a converter: ")
+        
+        if valor_str.replace('.', '', 1).isdigit():
+            valor = float(valor_str)
+
+            if valor < 0:
+                print("Digite um valor positivo.")
+            else:
+                resultado = converter_moeda(opcao, valor)
+                moeda_destino = nome_moeda(opcao)
+                print(f"\n{valor:.2f} convertido = {resultado:.2f} {moeda_destino}")
+        else:
+            print("Valor inválido. Digite um número.")
+    else:
+        print("Opção inválida. Escolha de 1 a 7.")
